@@ -1,6 +1,9 @@
 from faster_whisper import WhisperModel
 from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq, pipeline
 import torch
+import glob
+import os
+import json
 
 torch.cuda.empty_cache()
 
@@ -9,7 +12,7 @@ class TranscriberFast():
         self.model = WhisperModel(model_size_or_path="./faster-whisper-small-fa", device="cuda", compute_type="float16")
     def transcribe(self, src, options=None, **kw_args):
         segments, _ = self.model.transcribe(src)
-        return list(segments)    
+        return [seg._asdict() for seg in segments]
 
 class TranscriberWhisper():
     def __init__(self):
@@ -34,15 +37,12 @@ class TranscriberWhisper():
 
 
 
-FILE_PATH="./data/tts_1_1_1.mp3"
+DIR_PATH=r'./data/raw_audio/*.mp3'
 
 if __name__ == "__main__":
     tsr = TranscriberFast()
-    text = ""
-    res = tsr.transcribe(FILE_PATH)
-    for item in res:
-        text = text + "\n\n" + item.text
-    print(text)
-    with open('./data/tts_1_1_1.txt', 'w', encoding='utf-8') as f:
-        f.write(text)
-
+    for item in glob.glob(DIR_PATH):
+        segments = tsr.transcribe(item)
+        filename = os.path.splitext(item)[0] + ".json"
+        with open(filename, 'w', encoding='utf-8') as file:
+            json.dump(segments, file)
