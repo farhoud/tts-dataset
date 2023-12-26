@@ -8,6 +8,7 @@ import sys
 def chunk_audio(input_path, segments, output_path='./data/dataset/wavs'):
     # Load the audio file
     audio = AudioSegment.from_mp3(input_path)
+    audio = audio.set_channels(1)
     meta = ""
 
     # Create output directory if it doesn't exist
