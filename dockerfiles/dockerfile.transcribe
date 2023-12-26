@@ -7,6 +7,3 @@ WORKDIR /app
 VOLUME /app/data
 
 CMD python3 transcriber.py
-
-
-

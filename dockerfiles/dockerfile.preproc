@@ -2,7 +2,7 @@ FROM tcb-base
 
 RUN pip install TTS
 
-ADD . /app
+ADD ./fast_to_dataset.py /app
 
 WORKDIR /app
 

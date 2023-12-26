@@ -1,0 +1,11 @@
+FROM tcb-base
+
+RUN pip install pydub
+
+ADD ./train /app
+
+WORKDIR /app
+
+VOLUME /app/data
+
+CMD python3 train.py
