@@ -8,4 +8,4 @@ WORKDIR /app
 
 VOLUME /app/data
 
-CMD python3 fast_to_dataset.py
+CMD python3 ./fast_to_dataset.py ./data/raw_audio/
