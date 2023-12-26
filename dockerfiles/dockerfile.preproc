@@ -1,6 +1,6 @@
 FROM tcb-base
 
-RUN apt-get install python3-pydub
+RUN apt-get install python3-pydub -y
 
 ADD ./fast_to_dataset.py /app
 
