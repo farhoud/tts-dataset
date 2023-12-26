@@ -12,7 +12,7 @@ from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 from TTS.utils.downloaders import download_thorsten_de
 
-output_path = os.path.dirname(os.path.abspath(__file__))
+output_path = os.path.dirname('./data/training')
 dataset_config = BaseDatasetConfig(
     formatter="ljspeech", meta_file_train="metadata.txt", path="./data/dataset" 
 )
@@ -58,11 +58,6 @@ config = VitsConfig(
     print_eval=True,
     mixed_precision=False,
     test_sentences=[
-        ["سلطان محمود در زمستانی سخت به طلخک گفت که: با این جامه ی یک لا در این سرما چه می کنی "],
-        ["مردی نزد بقالی آمد و گفت پیاز هم ده تا دهان بدان خو شبوی سازم."],
-        ["از مال خود پاره ای گوشت بستان و زیره بایی معطّر بساز"],
-        ["یک بار هم از جهنم بگویید."],
-        ["یکی اسبی به عاریت خواست"]
     ],
     output_path=output_path,
     datasets=[dataset_config],
