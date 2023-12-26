@@ -1,6 +1,6 @@
 FROM tcb-base
 
-RUN pip install pydub
+RUN pip install TTS
 
 ADD ./train /app
 

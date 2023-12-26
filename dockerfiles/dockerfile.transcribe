@@ -1,5 +1,7 @@
 FROM tcb-base
 
+RUN apt-get install python3-pydub
+
 ADD ./transcriber.py /app/transcriber.py
 
 WORKDIR /app

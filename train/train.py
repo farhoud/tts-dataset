@@ -13,13 +13,13 @@ from TTS.utils.downloaders import download_thorsten_de
 
 output_path = os.path.dirname(os.path.abspath(__file__))
 dataset_config = BaseDatasetConfig(
-    formatter="mozilla", meta_file_train="metadata.csv", path="/kaggle/input/persian-tts-dataset-male" 
+    formatter="ljspeech", meta_file_train="metadata.txt", path="./data/dataset" 
 )
 
 
 
 audio_config = BaseAudioConfig(
-    sample_rate=22050,
+    sample_rate=44100,
     do_trim_silence=True,
     resample=False,
     mel_fmin=0,
