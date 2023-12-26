@@ -12,7 +12,7 @@ from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 from TTS.utils.downloaders import download_thorsten_de
 
-output_path = os.path('./data/training')
+output_path = os.path.dirname('./data/training')
 dataset_config = BaseDatasetConfig(
     formatter="ljspeech", meta_file_train="metadata.txt", path="./data/dataset" 
 )
