@@ -1,6 +1,6 @@
 FROM tcb-base
 
-RUN pip install TTS
+RUN apt-get install python3-pydub
 
 ADD ./fast_to_dataset.py /app
 
