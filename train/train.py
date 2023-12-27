@@ -12,7 +12,7 @@ from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 from TTS.utils.downloaders import download_thorsten_de
 
-output_path = os.path('./data/training')
+output_path = './data/training'
 dataset_config = BaseDatasetConfig(
     formatter="ljspeech", meta_file_train="metadata.txt", path="./data/dataset" 
 )
@@ -20,12 +20,11 @@ dataset_config = BaseDatasetConfig(
 
 
 audio_config = BaseAudioConfig(
-    sample_rate=44100,
+    sample_rate=22050,
     do_trim_silence=True,
-    resample=False,
-    mel_fmin=0,
-    mel_fmax=None 
+    resample=True,
 )
+
 character_config=CharactersConfig(
   characters='ءابتثجحخدذرزسشصضطظعغفقلمنهويِپچژکگیآأؤإئًَُّ',
   punctuations='!(),-.:;? ̠،؛؟‌<>',
@@ -42,8 +41,8 @@ config = VitsConfig(
     batch_size=32,
     eval_batch_size=16,
     batch_group_size=5,
-    num_loader_workers=0,
-    num_eval_loader_workers=2,
+    num_loader_workers=8,
+    num_eval_loader_workers=4,
     run_eval=True,
     test_delay_epochs=-1,
     epochs=1000,
@@ -57,8 +56,6 @@ config = VitsConfig(
     print_step=25,
     print_eval=True,
     mixed_precision=False,
-    test_sentences=[
-    ],
     output_path=output_path,
     datasets=[dataset_config],
 )
