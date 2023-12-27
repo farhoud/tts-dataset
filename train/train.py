@@ -20,7 +20,7 @@ dataset_config = BaseDatasetConfig(
 
 
 audio_config = BaseAudioConfig(
-    sample_rate=16000,
+    sample_rate=22050,
     do_trim_silence=False,
     resample=True,
 )
@@ -38,7 +38,7 @@ character_config=CharactersConfig(
 config = VitsConfig(
     audio=audio_config,
     run_name="vits_fa_male",
-    batch_size=32,
+    batch_size=16,
     eval_batch_size=16,
     batch_group_size=5,
     num_loader_workers=8,
